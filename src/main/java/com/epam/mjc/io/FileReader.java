@@ -24,7 +24,8 @@ public class FileReader {
             }
         } catch (java.io.FileNotFoundException e) {
             // Этот блок сработает, ТОЛЬКО если файла нет на диске
-            System.out.println("Файл не найден! Проверьте путь: " + e.getMessage());
+            logger.log(Level.SEVERE, "Файл не найден! Проверьте путь: ", e);
+
         }  catch (IOException e) {
             // Вместо System.out используем правильный логгер, который просит SonarQube!
             logger.log(Level.SEVERE, "Ошибка при чтении файла", e);
