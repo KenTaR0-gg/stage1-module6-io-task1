@@ -26,6 +26,7 @@ public class FileReader {
             // Этот блок сработает, ТОЛЬКО если файла нет на диске
             logger.log(Level.SEVERE, "Файл не найден! Проверьте путь: ", e);
 
+
         }  catch (IOException e) {
             // Вместо System.out используем правильный логгер, который просит SonarQube!
             logger.log(Level.SEVERE, "Ошибка при чтении файла", e);
