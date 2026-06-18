@@ -3,9 +3,10 @@ package com.epam.mjc.io;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 public class FileReader {
-
+    private static final Logger logger = Logger.getLogger(FileReader.class.getName());
     public Profile getDataFromFile(File file) {
         String name = null;
         Integer age = null;
@@ -24,9 +25,9 @@ public class FileReader {
         } catch (java.io.FileNotFoundException e) {
             // Этот блок сработает, ТОЛЬКО если файла нет на диске
             System.out.println("Файл не найден! Проверьте путь: " + e.getMessage());
-        } catch (IOException e) {
-            // Этот блок сработает на любые другие ошибки чтения (например, файл заблокирован)
-            System.out.println("Ошибка чтения файла: " + e.getMessage());
+        }  catch (IOException e) {
+            // Вместо System.out используем правильный логгер, который просит SonarQube!
+            logger.log(Level.SEVERE, "Ошибка при чтении файла", e);
         }
         return new Profile(name, age, email, phone);
         }
